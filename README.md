@@ -1,6 +1,6 @@
-# Short Drama Screenplay Skill for Claude Code
+# Short Drama Screenplay Skill
 
-> 专业的短剧剧本创作 AI 技能包，为 Claude Code (Anthropic CLI) 打造的一站式微短剧编剧工具。
+> 专业的短剧剧本创作 AI 技能包，适用于各类 AI 编程助手的一站式微短剧编剧工具。
 
 从选题立项到分集撰写、质量自检、合规审核、海外出海，覆盖短剧剧本生产全流程。
 
@@ -41,7 +41,7 @@
 
 ### 全局安装（推荐）
 
-将本仓库克隆到 Claude Code 的技能目录：
+将本仓库克隆到 AI 编程助手的技能目录：
 
 ```bash
 # macOS / Linux
@@ -51,7 +51,7 @@ git clone https://github.com/0xsline/short-drama.git ~/.claude/skills/short-dram
 git clone https://github.com/0xsline/short-drama.git "$USERPROFILE/.claude/skills/short-drama"
 ```
 
-安装完成后，在任意目录启动 Claude Code 即可使用。
+安装完成后，在任意目录启动你的 AI 编程助手即可使用。
 
 ### 项目级安装
 
@@ -64,7 +64,7 @@ git clone https://github.com/0xsline/short-drama.git .claude/skills/short-drama
 
 ### 验证安装
 
-启动 Claude Code 后输入 `/开始`，如果出现选题引导界面，说明安装成功。
+启动 AI 编程助手后输入 `/开始`，如果出现选题引导界面，说明安装成功。
 
 ---
 
@@ -484,8 +484,7 @@ short-drama/
 
 ### 兼容性
 
-- **Claude Code** (Anthropic CLI) — 主要适配平台
-- 理论上兼容任何支持 Skills 目录结构的 AI CLI 工具
+- 兼容任何支持 Skills 目录结构的 AI 编程助手（Claude Code、Codex CLI、Gemini CLI 等）
 
 ---
 
