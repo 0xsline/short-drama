@@ -1,0 +1,16 @@
+# 创作过程中生成的工作文件
+.drama-state.json
+creative-plan.md
+characters.md
+episode-directory.md
+episodes/
+reviews/
+compliance-report.md
+export/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
