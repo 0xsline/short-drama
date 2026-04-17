@@ -64,7 +64,7 @@ git clone https://github.com/0xsline/short-drama.git .claude/skills/short-drama
 
 ### 验证安装
 
-启动 AI 编程助手后输入 `/开始`，如果出现选题引导界面，说明安装成功。
+启动 AI 编程助手后输入 `/start`，如果出现选题引导界面，说明安装成功。
 
 ---
 
@@ -73,16 +73,16 @@ git clone https://github.com/0xsline/short-drama.git .claude/skills/short-drama
 一个典型的短剧创作流程：
 
 ```
-/开始          → 选择题材、受众、调性、集数
-/创作方案      → 生成完整故事骨架
-/角色开发      → 设计角色档案和关系图
-/目录          → 生成分集目录（含钩子和标记）
-/分集 1        → 撰写第1集剧本
-/自检 1        → 对第1集进行质量审查
-/分集 2-5      → 批量撰写第2-5集
-/自检 all      → 全集质量审查
-/合规          → 合规审核
-/导出          → 导出完整剧本
+/start          → 选择题材、受众、调性、集数
+/plan      → 生成完整故事骨架
+/characters      → 设计角色档案和关系图
+/outline          → 生成分集目录（含钩子和标记）
+/episode 1        → 撰写第1集剧本
+/review 1        → 对第1集进行质量审查
+/episode 2-5      → 批量撰写第2-5集
+/review all      → 全集质量审查
+/compliance          → 合规审核
+/export          → 导出完整剧本
 ```
 
 ### 海外模式
@@ -90,15 +90,15 @@ git clone https://github.com/0xsline/short-drama.git .claude/skills/short-drama
 如果目标市场在海外：
 
 ```
-/出海          → 切换为英文 + 好莱坞格式
-/分集 1        → 按 INT./EXT. 格式撰写
+/overseas          → 切换为英文 + 好莱坞格式
+/episode 1        → 按 INT./EXT. 格式撰写
 ```
 
 ---
 
 ## 命令手册
 
-### `/开始` — 选题立项
+### `/start` — 选题立项
 
 启动新项目的创作流程，配置基础参数。
 
@@ -118,11 +118,11 @@ git clone https://github.com/0xsline/short-drama.git .claude/skills/short-drama
 
 ---
 
-### `/创作方案` — 创作方案
+### `/plan` — 创作方案
 
 生成完整的故事骨架，包含8个核心板块。
 
-**前置条件：** 已执行 `/开始`
+**前置条件：** 已执行 `/start`
 
 **输出文件：** `creative-plan.md`
 
@@ -139,11 +139,11 @@ git clone https://github.com/0xsline/short-drama.git .claude/skills/short-drama
 
 ---
 
-### `/角色开发` — 角色设计
+### `/characters` — 角色设计
 
 创建完整的角色档案体系。
 
-**前置条件：** 已执行 `/创作方案`
+**前置条件：** 已执行 `/plan`
 
 **输出文件：** `characters.md`
 
@@ -167,11 +167,11 @@ git clone https://github.com/0xsline/short-drama.git .claude/skills/short-drama
 
 ---
 
-### `/目录` — 分集目录
+### `/outline` — 分集目录
 
 生成完整的分集目录表。
 
-**前置条件：** 已执行 `/角色开发`
+**前置条件：** 已执行 `/characters`
 
 **输出文件：** `episode-directory.md`
 
@@ -194,20 +194,20 @@ git clone https://github.com/0xsline/short-drama.git .claude/skills/short-drama
 
 ---
 
-### `/分集 {N}` — 分集撰写
+### `/episode {N}` — 分集撰写
 
 撰写具体集数的剧本。
 
-**前置条件：** 已执行 `/目录`
+**前置条件：** 已执行 `/outline`
 
 **输出文件：** `episodes/ep{NNN}.md`
 
 **参数格式：**
 
 ```
-/分集 1          → 撰写第1集
-/分集 3-5        → 批量撰写第3、4、5集
-/分集 next       → 撰写下一集（自动检测进度）
+/episode 1          → 撰写第1集
+/episode 3-5        → 批量撰写第3、4、5集
+/episode next       → 撰写下一集（自动检测进度）
 ```
 
 **剧本格式（国内 domestic 模式）：**
@@ -240,7 +240,7 @@ git clone https://github.com/0xsline/short-drama.git .claude/skills/short-drama
 
 ---
 
-### `/自检 {N}` — 质量审查
+### `/review {N}` — 质量审查
 
 对已撰写的剧集进行五维度质量评分。
 
@@ -251,16 +251,16 @@ git clone https://github.com/0xsline/short-drama.git .claude/skills/short-drama
 **参数格式：**
 
 ```
-/自检 1          → 审查第1集
-/自检 3-5        → 批量审查第3-5集
-/自检 all        → 审查所有已写集数
+/review 1          → 审查第1集
+/review 3-5        → 批量审查第3-5集
+/review all        → 审查所有已写集数
 ```
 
 **评分维度：** 见下方[质量评分体系](#质量评分体系)。
 
 ---
 
-### `/导出` — 导出剧本
+### `/export` — 导出剧本
 
 将所有创作内容整合为专业排版的完整剧本。
 
@@ -277,7 +277,7 @@ git clone https://github.com/0xsline/short-drama.git .claude/skills/short-drama
 
 ---
 
-### `/出海` — 海外模式
+### `/overseas` — 海外模式
 
 将创作切换为英文 + 好莱坞标准格式。
 
@@ -299,7 +299,7 @@ git clone https://github.com/0xsline/short-drama.git .claude/skills/short-drama
 
 ---
 
-### `/合规` — 合规审核
+### `/compliance` — 合规审核
 
 对全剧进行合规审查，检测潜在风险。
 
@@ -377,7 +377,7 @@ your-project/
 
 ## 质量评分体系
 
-`/自检` 命令使用五维度评分，每个维度 1-10 分，总分 50 分。
+`/review` 命令使用五维度评分，每个维度 1-10 分，总分 50 分。
 
 ### 评分维度
 
@@ -472,15 +472,15 @@ short-drama/
 
 | 命令 | 加载的参考文档 |
 |------|----------------|
-| `/开始` | genre-guide.md |
-| `/创作方案` | genre-guide.md, rhythm-curve.md, paywall-design.md, satisfaction-matrix.md |
-| `/角色开发` | villain-design.md |
-| `/目录` | rhythm-curve.md, hook-design.md, paywall-design.md |
-| `/分集 {N}` | opening-rules.md（第1-3集时）, hook-design.md |
-| `/自检 {N}` | rhythm-curve.md, hook-design.md, satisfaction-matrix.md |
-| `/合规` | compliance-checklist.md |
-| `/出海` | — |
-| `/导出` | — |
+| `/start` | genre-guide.md |
+| `/plan` | genre-guide.md, rhythm-curve.md, paywall-design.md, satisfaction-matrix.md |
+| `/characters` | villain-design.md |
+| `/outline` | rhythm-curve.md, hook-design.md, paywall-design.md |
+| `/episode {N}` | opening-rules.md（第1-3集时）, hook-design.md |
+| `/review {N}` | rhythm-curve.md, hook-design.md, satisfaction-matrix.md |
+| `/compliance` | compliance-checklist.md |
+| `/overseas` | — |
+| `/export` | — |
 
 ### 兼容性
 

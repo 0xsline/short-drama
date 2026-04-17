@@ -27,7 +27,7 @@
 ```
 状态文件: .drama-state.json
 {
-  "currentStep": "开始|创作方案|角色开发|目录|分集|自检|导出",
+  "currentStep": "start|plan|characters|outline|episode|review|export",
   "genre": [],
   "audience": "",
   "tone": "",
@@ -45,14 +45,14 @@
 
 | 文件 | 用途 | 加载时机 |
 |------|------|---------|
-| genre-guide.md | 13种题材定义 + 出海题材 | /开始 |
-| opening-rules.md | 开篇黄金法则 + 6种开场模板 | /创作方案, /分集 |
-| paywall-design.md | 付费卡点设计策略 | /创作方案, /目录 |
-| rhythm-curve.md | 节奏曲线 + 单集微结构 | /创作方案, /分集 |
-| satisfaction-matrix.md | 5大爽点类型矩阵 | /创作方案, /分集 |
-| villain-design.md | 4层反派体系设计 | /角色开发 |
-| hook-design.md | 5种钩子类型 | /分集 |
-| compliance-checklist.md | 合规审核清单 | /合规 |
+| genre-guide.md | 13种题材定义 + 出海题材 | /start |
+| opening-rules.md | 开篇黄金法则 + 6种开场模板 | /plan, /episode |
+| paywall-design.md | 付费卡点设计策略 | /plan, /outline |
+| rhythm-curve.md | 节奏曲线 + 单集微结构 | /plan, /episode |
+| satisfaction-matrix.md | 5大爽点类型矩阵 | /plan, /episode |
+| villain-design.md | 4层反派体系设计 | /characters |
+| hook-design.md | 5种钩子类型 | /episode |
+| compliance-checklist.md | 合规审核清单 | /compliance |
 
 **加载方式：** 进入对应阶段时，读取 references/ 目录下的对应文件作为创作指导。
 
@@ -60,7 +60,7 @@
 
 ## 命令定义
 
-### /开始
+### /start
 
 **功能：** 选题定位，确定创作方向。
 
@@ -81,9 +81,9 @@
    - **集数规模：** 50-60集（紧凑）/ 60-80集（标准）/ 80-100集（长线）
    - **输出语言：** 中文（国内标准格式）/ English（好莱坞行业标准）
 
-4. 如用户选择 English，自动切换为出海模式（等同 /出海）
+4. 如用户选择 English，自动切换为出海模式（等同 /overseas）
 
-5. 汇总确认后，保存状态到 `.drama-state.json`，提示进入下一步 `/创作方案`
+5. 汇总确认后，保存状态到 `.drama-state.json`，提示进入下一步 `/plan`
 
 **输出格式：**
 ```markdown
@@ -94,19 +94,19 @@
 - **故事基调：** {基调}
 - **结局类型：** {结局}
 - **集数规模：** {集数}集
-- **输出模式：** {国内/出海}
+- **输出模式：** {国内/overseas}
 - **输出语言：** {语言}
 
-✅ 方向已锁定！输入 /创作方案 开始构建故事骨架
+✅ 方向已锁定！输入 /plan 开始构建故事骨架
 ```
 
 ---
 
-### /创作方案
+### /plan
 
 **功能：** 生成完整的故事骨架和创作策略。
 
-**前置条件：** 已完成 /开始
+**前置条件：** 已完成 /start
 
 **加载参考：** opening-rules.md, paywall-design.md, rhythm-curve.md, satisfaction-matrix.md
 
@@ -126,15 +126,15 @@
 
 **输出：** 保存为 `creative-plan.md`
 
-**结束提示：** `✅ 创作方案已保存！输入 /角色开发 开始塑造人物`
+**结束提示：** `✅ 创作方案已保存！输入 /characters 开始塑造人物`
 
 ---
 
-### /角色开发
+### /characters
 
 **功能：** 生成完整角色体系。
 
-**前置条件：** 已完成 /创作方案
+**前置条件：** 已完成 /plan
 
 **加载参考：** villain-design.md
 
@@ -175,15 +175,15 @@ graph TD
 
 **输出：** 保存为 `characters.md`
 
-**结束提示：** `✅ 角色档案已保存！输入 /目录 规划全剧分集`
+**结束提示：** `✅ 角色档案已保存！输入 /outline 规划全剧分集`
 
 ---
 
-### /目录
+### /outline
 
 **功能：** 生成全剧分集目录。
 
-**前置条件：** 已完成 /角色开发
+**前置条件：** 已完成 /characters
 
 **加载参考：** paywall-design.md, rhythm-curve.md
 
@@ -201,7 +201,7 @@ graph TD
 - 无标记 = 常规推进集
 
 **要求：**
-- 必须覆盖全部集数（与 /开始 设定一致）
+- 必须覆盖全部集数（与 /start 设定一致）
 - 前 10 集必须包含至少 3 个 🔥 和 2 个 💰
 - 全剧 🔥 集数占比 25-35%
 - 💰 集数占比 10-15%
@@ -211,22 +211,22 @@ graph TD
 
 **重要提示：** 生成目录后，提醒用户务必通读全部目录确认节奏再开始写分集。
 
-**结束提示：** `✅ 分集目录已保存！请先通读目录确认节奏，然后输入 /分集 1 开始写第一集`
+**结束提示：** `✅ 分集目录已保存！请先通读目录确认节奏，然后输入 /episode 1 开始写第一集`
 
 ---
 
-### /分集 {N}
+### /episode {N}
 
 **功能：** 生成第 N 集的完整剧本。
 
-**前置条件：** 已完成 /目录
+**前置条件：** 已完成 /outline
 
 **加载参考：** opening-rules.md（第1集时重点参考）, rhythm-curve.md, satisfaction-matrix.md, hook-design.md
 
 **支持格式：**
-- `/分集 1` — 写第1集
-- `/分集 5-8` — 批量写第5到第8集
-- `/分集 next` — 写下一集（自动递增）
+- `/episode 1` — 写第1集
+- `/episode 5-8` — 批量写第5到第8集
+- `/episode next` — 写下一集（自动递增）
 
 **单集剧本格式（国内模式）：**
 
@@ -321,20 +321,20 @@ CLOSE-UP - {key detail}
 
 **输出：** 保存为 `episodes/ep{NNN}.md`（三位数补零）
 
-**结束提示：** `✅ 第{N}集已保存！输入 /分集 {N+1} 继续，或 /自检 {N} 检查质量`
+**结束提示：** `✅ 第{N}集已保存！输入 /episode {N+1} 继续，或 /review {N} 检查质量`
 
 ---
 
-### /自检 {N}
+### /review {N}
 
 **功能：** 对已完成的剧本进行质量检查。
 
 **前置条件：** 目标集数已完成
 
 **支持格式：**
-- `/自检 5` — 检查第5集
-- `/自检 1-10` — 批量检查第1到第10集
-- `/自检 all` — 检查所有已完成集数
+- `/review 5` — 检查第5集
+- `/review 1-10` — 批量检查第1到第10集
+- `/review all` — 检查所有已完成集数
 
 **检查维度（每项 1-10 分）：**
 
@@ -382,7 +382,7 @@ CLOSE-UP - {key detail}
 
 ---
 
-### /导出
+### /export
 
 **功能：** 将完成的剧本导出为专业排版的完整文件。
 
@@ -442,7 +442,7 @@ CLOSE-UP - {key detail}
 
 ---
 
-### /出海
+### /overseas
 
 **功能：** 切换为出海模式，针对海外市场创作。
 
@@ -472,7 +472,7 @@ CLOSE-UP - {key detail}
 
 ---
 
-### /合规
+### /compliance
 
 **功能：** 对已完成的剧本进行合规审核。
 
